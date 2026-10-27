@@ -1,0 +1,134 @@
+{
+  "source": "Family Memories app (private repository)",
+  "sourceCommit": "ff3c49e9a256bca5fafa11594c6611312c5b5be6",
+  "sourceCommitDate": "2026-10-27T10:45:11+01:00",
+  "files": {
+    "src/lib/e2e/akWrap.ts": {
+      "sha256": "543362a471eaa4f8391ca3b40a91c8855a88a104c81d3b32f1826649094c16bf"
+    },
+    "src/lib/e2e/avatarSig.ts": {
+      "sha256": "bbe3b608c123a498e8985a50ac7653ad445e922cfe9d9c7ffe1a18ec802cf1ab"
+    },
+    "src/lib/e2e/bytes.ts": {
+      "sha256": "a473505a0fd37471357f965b413e865820b9355a3d569b694d3b004325dd5525"
+    },
+    "src/lib/e2e/deviceStore.ts": {
+      "sha256": "3104134efa766d86aa44507fbac7bbe0564145630a95c0987e40cb9523602465"
+    },
+    "src/lib/e2e/envelope.ts": {
+      "sha256": "170cb94e11ebbd734a4f2676849a1f7625210cd9421aa89a2c41392316f3a1c3"
+    },
+    "src/lib/e2e/hpke.ts": {
+      "sha256": "4411f7c5dba7226c2fa94a155368d104c8c65b58a4f3fd6eafec2d4be5f66d43"
+    },
+    "src/lib/e2e/identity.ts": {
+      "sha256": "29e046b789cfced58cd95c10417344d722641c4dafbe68bb4e2115eea1eb1085"
+    },
+    "src/lib/e2e/keyRing.ts": {
+      "sha256": "3c5b54da8eb27d9ac7048102741e620ace7dc9b3517a48c3289eb6aab66cff02"
+    },
+    "src/lib/e2e/linkSig.ts": {
+      "sha256": "f81c04b1429a13f489b7ee8509adf3bdae49a3787db5afc801e507cf726a579d"
+    },
+    "src/lib/e2e/mediaSeal.ts": {
+      "sha256": "888107b2c9b862f600f827c78507b6becc115f84e2e465b8ff21f07ba6789751"
+    },
+    "src/lib/e2e/objBinding.ts": {
+      "sha256": "fca6e764ef2e8aad10792d33eff7966f6a640ae4f8b0371d06b1bf91e1dfc03e"
+    },
+    "src/lib/e2e/objectKey.ts": {
+      "sha256": "f996a2f76d17adbdd52d4ab608e3e13420d75b3654ab1c06693396fa4a46c9dd"
+    },
+    "src/lib/e2e/recoveryCode.ts": {
+      "sha256": "75aca1dfa2274db6d9a01087840d8f8a787beff6de90c24d84cf5cdb5d07be2f"
+    },
+    "src/lib/e2e/rowCrypto.ts": {
+      "sha256": "1309925ec22a83cc2234a3d5826b2ccfcf82a644f942838c2c024cbfbec269ac"
+    },
+    "src/lib/e2e/rowCryptoV2.ts": {
+      "sha256": "acf8b0716cdd2444b180efea3304aa2026a73fd6ba1b8bc890627a65f3c3a5ac"
+    },
+    "src/lib/e2e/rowFields.ts": {
+      "sha256": "72220a4cf7541aa4198b3e8dbadfad311d5844083c3143848b843986d0d91413"
+    },
+    "src/lib/e2e/rowOpen.ts": {
+      "sha256": "3cb7f0f6636548e8decacdc5aa34deb9961e17789e4af130bb296c51f156c873"
+    },
+    "src/lib/e2e/rowsV2Switch.ts": {
+      "sha256": "6b01dd8192eed4156b510437cf0d3cd1723802529a2a90721f97bd38fb1f293e"
+    },
+    "src/lib/e2e/rowVerify.ts": {
+      "sha256": "e3ea3123fb6d2145f2a43ebb48eae79a918b93a78f17c902fca0957d57730d4d"
+    },
+    "src/lib/e2e/statements.ts": {
+      "sha256": "379c851ff6179eee3d2e8b5af6de8ba53016b7e3286e622db8e3dde1fb1977df"
+    },
+    "src/lib/e2e/tagIndex.ts": {
+      "sha256": "dee7d9602e457d88b2b21f74af7469984363a482eeab19f64259455683dcd78c"
+    },
+    "src/lib/e2e/trustCodes.ts": {
+      "sha256": "9e7259b7f871d0e219f96ca1366189ffcfce6f1ae4b7457b4b379f56942c0c98"
+    },
+    "src/lib/e2e/trustStore.ts": {
+      "sha256": "32d23de2431222e44a756add8c49d9057be5965f64a5df8f53d76d9098d0498e"
+    },
+    "src/lib/e2e/vault.ts": {
+      "sha256": "a3d04c2e770df42962b5fa40ccf6425427152459710f6e17588c266975b4db91"
+    },
+    "src/lib/crypto.ts": {
+      "sha256": "5330373c2f4d3c2684c8e74780c9ed833b14d4eb1bd3496bee2ea0c9a71efb7d"
+    },
+    "src/lib/videoCrypto.ts": {
+      "sha256": "993bf0c64796fa4647b0fb5cd363f3334316e60f20ecbe83a78b20e9cb36aa14"
+    },
+    "src/lib/mediaMime.ts": {
+      "sha256": "201574396e62fda5f0f30419abaf6792686eb78a9f728926b6ae7f460201d634"
+    },
+    "src/lib/native/deviceKey.ts": {
+      "sha256": "d598d0e7617f6a3b427778f9c9b6b220d1359f382911c277c441789a2c36eb43"
+    },
+    "android/DeviceKeyPlugin.java": {
+      "sha256": "3423ec6b820e4bebdfcc48f1ad33196b262a71421cb5069bca6b15633082d660",
+      "from": "android/app/src/main/java/eu/familymemories/app/DeviceKeyPlugin.java"
+    },
+    "src/lib/clientApp/buildTarget.ts": {
+      "sha256": "06cd36657d88eada69aba7ab9239d074169f23a001619e54accce3446f1532f8"
+    },
+    "src/lib/clientApp/apiFetch.ts": {
+      "sha256": "ca61864c52b40919adb05c0ab0bc28e49919b732d17c88e00ee68f905d3ee07f"
+    },
+    "src/lib/clientApp/maintenanceSignal.ts": {
+      "sha256": "0a8478da77e81d717f7e6fd6adbaa5606894f9e59418299a4f1abd038f95a837"
+    },
+    "src/lib/e2e/avatarSig.test.ts": {
+      "sha256": "1f59f87c75c87b2b1328132122d8269c27f1e2ffb257a980e7c8add1a0a8c0ef"
+    },
+    "src/lib/e2e/deviceStore.test.ts": {
+      "sha256": "d2c1dd655ce7ee331d57a647dd68b6af67550a5bc64db52a60fc352dd14c42b8"
+    },
+    "src/lib/e2e/e2e.test.ts": {
+      "sha256": "a51c0893d91c03b988796ba72dca823236d325c3612f2b3100e5b9ef91a4c4c6"
+    },
+    "src/lib/e2e/linkSig.test.ts": {
+      "sha256": "83aa8df3070681ad7737e7419353da29561a9fb476e201e8f1e9cd62dd8a20ec"
+    },
+    "src/lib/e2e/mediaSeal.test.ts": {
+      "sha256": "b0585a2b74c2d4ad1b73468637fc8241dc012ce7c58de6773edd00ef24d65067"
+    },
+    "src/lib/e2e/objBinding.test.ts": {
+      "sha256": "283f4bfda86ada2063b27ad96ff6986360e224ea7dd28833e73ce5fe5ef9b4c2"
+    },
+    "src/lib/e2e/objectKey.test.ts": {
+      "sha256": "a348f96b500e1db77df3659abfa729517a77b62fc8fbb8c306b3708f507836ca"
+    },
+    "src/lib/e2e/passkeyApp.test.ts": {
+      "sha256": "d173d1a2c64fc1398f6c923db5e1588488223a6366a56b742bd7a21c857b8225"
+    },
+    "src/lib/e2e/rowCryptoV2.test.ts": {
+      "sha256": "e140076add38d4916ce948cf7e5f72276e9578bd3f07d5af8f204397ad022180"
+    },
+    "src/lib/e2e/rowVerify.test.ts": {
+      "sha256": "7d61c16f3f8ba86849aeace4e0e7104adfa06cbe436ff638bcb70583656c681d"
+    }
+  }
+}

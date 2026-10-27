@@ -1,0 +1,23 @@
+{
+  "name": "family-memories-krypto-kern",
+  "private": true,
+  "description": "Family Memories — crypto core, source available for review (not open source)",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hpke/core": "1.9.0",
+    "@hpke/dhkem-x25519": "1.8.0",
+    "@noble/curves": "2.4.0",
+    "@supabase/supabase-js": "2.110.2",
+    "hash-wasm": "4.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}
