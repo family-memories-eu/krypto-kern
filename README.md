@@ -62,10 +62,16 @@ npm run typecheck
 
 ## Abgleich mit der Live-Seite
 
-Die Build-ID der Website ist der Commit der App. Sie steht in jedem Skriptpfad der Seite
-(`/_next/static/<commit>/…`). `MANIFEST.json` nennt den Commit, aus dem dieser Stand exportiert
-wurde. Ändert sich eine der Dateien hier in der App, wird vor dem nächsten Deploy neu exportiert;
-jeder Stand trägt den Tag `app-<commit>`.
+Die Build-ID der Website ist der Commit der App. Sie steht im HTML jeder Seite in den
+eingebetteten Seitendaten (`"b":"<commit>"`), zum Beispiel:
+
+```bash
+curl -s https://family-memories.eu/de | grep -oE '[0-9a-f]{40}'
+```
+
+`MANIFEST.json` nennt den Commit, aus dem dieser Stand exportiert wurde. Die beiden müssen nicht
+gleich sein: Ein neuer Stand entsteht nur, wenn sich eine dieser Dateien in der App ändert, und
+dann vor dem nächsten Deploy. Jeder Stand trägt den Tag `app-<commit>`.
 
 ## Eine Schwachstelle gefunden?
 
@@ -110,10 +116,12 @@ are internal planning documents and not published. Suggested order: §2 and §3 
 
 **Running:** Node.js 22 or newer — `npm ci`, `npm test`, `npm run typecheck`.
 
-**Matching the live site:** the website's build ID is the app commit and appears in every script
-path (`/_next/static/<commit>/…`). `MANIFEST.json` names the commit this snapshot was exported
-from. When one of these files changes in the app, it is re-exported before the next deploy; every
-snapshot is tagged `app-<commit>`.
+**Matching the live site:** the website's build ID is the app commit. It appears in the HTML of
+every page, in the embedded page data (`"b":"<commit>"`), e.g.
+`curl -s https://family-memories.eu/de | grep -oE '[0-9a-f]{40}'`. `MANIFEST.json` names the commit
+this snapshot was exported from. The two need not be equal: a new snapshot is only made when one of
+these files changes in the app, and then before the next deploy. Every snapshot is tagged
+`app-<commit>`.
 
 **Found a vulnerability?** Please report it to us first: <https://family-memories.eu/en/sicherheit>
 or `security@family-memories.eu`. Acknowledgement within three working days, disclosure after the
