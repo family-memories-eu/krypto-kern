@@ -222,10 +222,39 @@ async function myBackups(d: VaultDeps, identityId: string): Promise<(BackupRow &
   return countingBackups(d, (data ?? []) as (BackupRow & { created_at: string })[]);
 }
 
-export async function backupSummary(d: VaultDeps, identityId: string): Promise<{ recovery: boolean; passkeys: number }> {
+/**
+ * Where the recovery code stands for the CURRENT account key (K1 probe
+ * 28.10.2026): "current" — a code opens this key; "stale" — only a code made
+ * for an earlier key (after „Neu anfangen“): it opens nothing any more, but its
+ * row is still there, so a new code REPLACES it (fresh login + mail, 0151);
+ * "none" — nothing to replace.
+ */
+export type RecoveryState = "current" | "stale" | "none";
+
+export function recoveryStateOf(current: boolean, anyRow: boolean): RecoveryState {
+  return current ? "current" : anyRow ? "stale" : "none";
+}
+
+/** Any recovery row of mine, for whichever key — one per person (unique key). */
+async function hasAnyRecoveryRow(d: VaultDeps): Promise<boolean> {
+  const { count, error } = await d.supabase
+    .from("ak_backups")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", d.userId)
+    .eq("kind", "recovery");
+  if (error) throw error;
+  return (count ?? 0) > 0;
+}
+
+export async function backupSummary(
+  d: VaultDeps,
+  identityId: string,
+): Promise<{ recovery: boolean; recoveryState: RecoveryState; passkeys: number }> {
   const rows = await myBackups(d, identityId);
+  const recovery = rows.some((r) => r.kind === "recovery");
   return {
-    recovery: rows.some((r) => r.kind === "recovery"),
+    recovery,
+    recoveryState: recoveryStateOf(recovery, recovery || (await hasAnyRecoveryRow(d))),
     passkeys: rows.filter((r) => r.kind === "passkey").length,
   };
 }
@@ -351,6 +380,25 @@ export async function prepareRecoveryCode(
       sig: await backupSig(d, ready, "recovery", "", blob),
     },
   };
+}
+
+/**
+ * Step one of the recovery dialog (plan docs/notfallcode-erneuern-plan.md, A):
+ * replacing a code needs a login no older than 15 minutes (0151). Ask BEFORE a
+ * code exists — a code that was shown, printed and typed back but then could
+ * not be stored feels like safety and opens nothing (K1 probe 28.10.2026).
+ */
+export async function beginRecoveryCode(
+  d: VaultDeps,
+  ready: VaultReady,
+  params: Argon2Params = RECOVERY_ARGON2,
+): Promise<{ kind: "login" } | { kind: "code"; prepared: PreparedRecoveryCode }> {
+  if (await hasAnyRecoveryRow(d)) {
+    const { data, error } = await d.supabase.rpc("e2e_fresh_login");
+    if (error) throw error;
+    if (data !== true) return { kind: "login" };
+  }
+  return { kind: "code", prepared: await prepareRecoveryCode(d, ready, params) };
 }
 
 /**
