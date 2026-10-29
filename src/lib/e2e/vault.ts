@@ -392,13 +392,16 @@ export async function beginRecoveryCode(
   d: VaultDeps,
   ready: VaultReady,
   params: Argon2Params = RECOVERY_ARGON2,
-): Promise<{ kind: "login" } | { kind: "code"; prepared: PreparedRecoveryCode }> {
-  if (await hasAnyRecoveryRow(d)) {
+): Promise<{ kind: "login" } | { kind: "code"; prepared: PreparedRecoveryCode; replaces: boolean }> {
+  // `replaces`: the dialog says the 15 minutes run and that the old code stays
+  // valid if storing fails (K15 probe 29.10.2026) — only true when there is one.
+  const replaces = await hasAnyRecoveryRow(d);
+  if (replaces) {
     const { data, error } = await d.supabase.rpc("e2e_fresh_login");
     if (error) throw error;
     if (data !== true) return { kind: "login" };
   }
-  return { kind: "code", prepared: await prepareRecoveryCode(d, ready, params) };
+  return { kind: "code", prepared: await prepareRecoveryCode(d, ready, params), replaces };
 }
 
 /**
