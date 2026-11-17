@@ -15,6 +15,9 @@ export const ROW_COLUMNS = {
   comments: { body: "body" },
   tags: { name: "name" },
   families: { name: "name", tagline: "tagline", accent: "accent" },
+  // Posters (0207): the whole draft is one sealed field `doc`; the table has no
+  // plaintext column it would replace.
+  poster_designs: {},
 } as const;
 
 export type SealedTable = keyof typeof ROW_COLUMNS;
@@ -50,6 +53,11 @@ export const ROW_V2 = {
   // signer rule already asks for the CURRENT owner — the new owner's device
   // then seals the head anew (resealV2.ts).
   families: { refs: [], author: null, signers: "owner" },
+  // Private drafts (Q8): only the creator reads and writes them (RLS 0207), so
+  // only the creator signs. NOT in the reseal of resealV2.ts — the owner's
+  // device that reseals after a rotation cannot even see these rows; older key
+  // versions stay readable (Schlüsselrotation), so a draft is never lost.
+  poster_designs: { refs: [], author: "created_by", signers: "authorOrOwner" },
   content_translations: {
     refs: ["source_table", "source_id", "source_column", "target_locale"],
     author: null,
