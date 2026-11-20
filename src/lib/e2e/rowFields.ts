@@ -18,6 +18,10 @@ export const ROW_COLUMNS = {
   // Posters (0207): the whole draft is one sealed field `doc`; the table has no
   // plaintext column it would replace.
   poster_designs: {},
+  // Book drafts (0208, Buch-Editor): the head and each page are one sealed field
+  // each (`head`, `page`); no plaintext column to replace.
+  book_drafts: {},
+  book_draft_pages: {},
 } as const;
 
 export type SealedTable = keyof typeof ROW_COLUMNS;
@@ -58,6 +62,11 @@ export const ROW_V2 = {
   // device that reseals after a rotation cannot even see these rows; older key
   // versions stay readable (Schlüsselrotation), so a draft is never lost.
   poster_designs: { refs: [], author: "created_by", signers: "authorOrOwner" },
+  // Book drafts (0208): private to their creator like poster drafts. A page is
+  // bound to its draft, so a server cannot move it into another draft unnoticed
+  // (the database's composite key holds family and author as well).
+  book_drafts: { refs: [], author: "created_by", signers: "authorOrOwner" },
+  book_draft_pages: { refs: ["draft_id"], author: "created_by", signers: "authorOrOwner" },
   content_translations: {
     refs: ["source_table", "source_id", "source_column", "target_locale"],
     author: null,

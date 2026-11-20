@@ -1,7 +1,7 @@
 {
   "source": "Family Memories app (private repository)",
-  "sourceCommit": "f237a4dfa27892c316b5f1551831786e3dc865fb",
-  "sourceCommitDate": "2026-11-17T20:59:15+01:00",
+  "sourceCommit": "d2488fe26f39ccd0647261e9c73b0634c9decffc",
+  "sourceCommitDate": "2026-11-20T14:23:19+01:00",
   "files": {
     "src/lib/e2e/akWrap.ts": {
       "sha256": "543362a471eaa4f8391ca3b40a91c8855a88a104c81d3b32f1826649094c16bf"
@@ -49,7 +49,7 @@
       "sha256": "acf8b0716cdd2444b180efea3304aa2026a73fd6ba1b8bc890627a65f3c3a5ac"
     },
     "src/lib/e2e/rowFields.ts": {
-      "sha256": "88726884e890cd773b21b81da3d3391843071d308b24c843ac195a978adf9c2d"
+      "sha256": "8a52d783709c8ae30ab953af4b54b1b2479d8b0c8e1f4eadfa2c3d125c9e8b57"
     },
     "src/lib/e2e/rowOpen.ts": {
       "sha256": "3cb7f0f6636548e8decacdc5aa34deb9961e17789e4af130bb296c51f156c873"
